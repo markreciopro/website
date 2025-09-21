@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +6,39 @@
     <!-- Load Tailwind CSS from CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Import a monospace font for a "programmed" feel */
+        /*
+         * Custom styles for the dark, tech-inspired theme.
+         * The color palette is inspired by the vibrant neon colors in the Analyzeo fox logo.
+         */
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Roboto Mono', monospace;
             overflow-x: hidden;
-            background-color: #2D2D2D; /* Dark charcoal background */
-            color: #F8F8F2; /* Soft white text */
+            background-color: #0d0f1b; /* A very dark, almost black blue */
+            color: #E0E8E1; /* Soft off-white text */
         }
         .container {
             max-width: 800px;
         }
         .job-title-highlight {
-            color: #A6E22E;
+            color: #9FDF32; /* Neon green */
         }
         .text-action {
-            color: #66D9EF;
+            color: #00A3FF; /* Vibrant blue */
             font-weight: 500;
         }
         .section-card {
-            background-color: #3C3C3C;
+            background-color: rgba(29, 31, 46, 0.8); /* Semi-transparent dark card */
+            backdrop-filter: blur(10px);
             border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1); /* Deeper shadow */
             padding: 2rem;
             margin-bottom: 2rem;
-            border: 1px solid #505050;
+            border: 1px solid rgba(159, 223, 50, 0.2);
         }
         .section-header {
-            color: #A6E22E;
-            border-bottom: 2px solid #66D9EF;
+            color: #9FDF32;
+            border-bottom: 2px solid #00A3FF;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -49,9 +52,40 @@
             height: 100%;
             z-index: -1;
         }
+
+        /* Back to top button style */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #00A3FF, #9FDF32);
+            color: #0d0f1b;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .project-card {
+            background-color: rgba(29, 31, 46, 0.6);
+            border: 1px solid rgba(159, 223, 50, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: #00A3FF;
+        }
     </style>
 </head>
-<body class="bg-[#2D2D2D] text-[#F8F8F2]">
+<body class="bg-[#0d0f1b] text-[#E0E8E1]">
 
     <!-- Animated background canvas -->
     <canvas id="bgCanvas"></canvas>
@@ -60,66 +94,59 @@
     <div class="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
         <!-- Sticky navigation bar at the top -->
-        <nav class="sticky top-0 bg-[#3C3C3C] rounded-xl shadow-lg p-4 mb-8 flex justify-center z-50 border border-[#505050]">
-            <a href="#about" class="text-gray-400 hover:text-[#A6E22E] font-medium mx-4 transition-colors">About</a>
-            <a href="#services" class="text-gray-400 hover:text-[#A6E22E] font-medium mx-4 transition-colors">Services</a>
-            <a href="#projects" class="text-gray-400 hover:text-[#A6E22E] font-medium mx-4 transition-colors">Projects</a>
-            <a href="#recommendations" class="text-gray-400 hover:text-[#A6E22E] font-medium mx-4 transition-colors">Recommendations</a>
-            <a href="#contact" class="text-gray-400 hover:text-[#A6E22E] font-medium mx-4 transition-colors">Contact</a>
+        <nav class="sticky top-0 bg-transparent rounded-xl shadow-lg p-4 mb-8 flex flex-wrap justify-center z-50">
+            <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">About</a>
+            <a href="#services" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Services</a>
+            <a href="#projects" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Projects</a>
+            <a href="#testimonials" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Testimonials</a>
+            <a href="#contact" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Contact</a>
         </nav>
 
         <!-- Header section -->
-        <header class="text-center py-10">
-            <!-- The logo is now a link to the top of the page -->
-            <a href="#">
-                <img src="https://i.ibb.co/hxH3Ldqm/Copilot-20250916-051759.png" alt="Analyzeo logo" class="w-64 h-64 mx-auto mb-4 rounded-full border-2 border-[#66D9EF] transition-transform duration-300 transform hover:scale-105">
-            </a>
-            <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
-                Transforming businesses with data-driven insights and innovative solutions.
-            </p>
-        </header>
 
-        <!-- About Us section -->
-        <section id="about" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">About Us</h2>
-            <p class="text-[#F8F8F2] leading-relaxed">
-                At Analyzeo ( ), we believe that every business has a unique story hidden in its data. We are a team of passionate
-                analysts and technologists dedicated to helping companies uncover these stories and leverage them for
-                strategic growth. Our mission is to provide clear, actionable insights that empower our clients to make
-                smarter decisions, optimize operations, and achieve their goals.
-            </p>
+        <!-- About Us section, now containing the Freelance Consulting content -->
+        <section id="about" class="section-card">
+            <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
+             <div class="text-center">
+                 <a href="https://ibb.co/PsVvj8Ds"><img src="https://i.ibb.co/LDsXRfND/Neon-Fox-Logo-with-Scarf.png" alt="Neon-Fox-Logo-with-Scarf" border="0" class="mx-auto my-4 w-48 h-auto"></a>
+             </div>
+            <div class="text-[#E0E8E1] leading-relaxed mt-4">
+                <p class="text-lg font-semibold text-center mb-4">The Legend of Analyzeo</p>
+                <p class="mb-4">In a sprawling metropolis of towering data silos and labyrinthine spreadsheets, a new hero emerged from the shadows. His name was **Analyzeo**, a cunning and strategic fox, clad in a sleek neon scarf that pulsed with the energy of a thousand algorithms. He was no ordinary consultant; he was the city's unsung guardian against the forces of inefficiency and confusion. While other analysts focused on the grand, high-stakes games of multinational corporations, Analyzeo saw the struggle of the small and mid-sized businesses, whose potential was buried under mountains of unparsed data and unoptimized workflows.</p>
+                <p class="mb-4">With a glance, Analyzeo could see the hidden patterns in a company's sales figures, the unseen opportunities in their customer demographics, and the silent drain of resources in their operations. He used his unique powers—a mastery of **Python**, the keen vision of a **Power BI** artist, and the relentless logic of an **SQL** query—to untangle complex problems. He wasn't just a number cruncher; he was a strategic ally, helping small business owners find their footing in a competitive world, transforming their raw data into a clear path forward. For Analyzeo, the greatest reward was not fame or fortune, but the sight of a thriving small business, empowered by the very data that once held it back.</p>
+            </div>
         </section>
 
-        <!-- Services section with a grid layout -->
-        <section id="services" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">Our Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Business Intelligence</h3>
+        <!-- Services section with a grid layout and hover effects -->
+        <section id="services" class="section-card">
+            <h2 class="section-header">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Business Intelligence</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Building custom dashboards and reports to visualize key performance indicators and monitor business health.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Data Analytics</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Data Analytics</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Performing deep-dive analysis to uncover trends, patterns, and opportunities for improvement.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Predictive Modeling</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Predictive Modeling</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Developing predictive models to forecast future outcomes and support strategic planning.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">HR Analytics</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">HR Analytics</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Leveraging workforce data to optimize recruitment, retention, and employee engagement strategies.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Business Analytics</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Business Analytics</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Utilizing data to uncover insights that optimize operations and drive strategic business growth.
                     </p>
@@ -131,18 +158,9 @@
         <section id="projects" class="section-card">
             <h2 class="section-header">My Chronicles of Victory</h2>
             
-            <!-- Main Projects Video -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold text-center job-title-highlight mb-4">A chronicle of my victories</h3>
-                <div class="w-full aspect-video rounded-xl overflow-hidden border border-[#FFD700]">
-                    <iframe src="https://www.youtube.com/embed/D1lL2-1tw34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
-                </div>
-                <p class="mt-4 text-center text-[#96A099]">This video showcases how I lead the charge against data challenges.</p>
-            </div>
-
             <div class="space-y-12">
                 <!-- Python Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Avoxi Billing Analysis: Defeating Hidden Costs</h3>
                     <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
                         **The Challenge:** A company was losing money on billing, but they couldn't see where. The data was fragmented and disorganized.
@@ -156,7 +174,7 @@
                 </div>
                 
                 <!-- Power BI Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Power BI Dashboard: A Strategic Compass</h3>
                     <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
                         **The Challenge:** A business needed to make data-driven decisions but couldn't get a clear, real-time picture of their performance.
@@ -168,14 +186,14 @@
                         <li class="list-item">The dashboard now serves as a real-time, interactive map, allowing them to explore key metrics and make data-driven decisions with confidence.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#FFD700] hover:underline font-semibold text-center">
+                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#00A3FF] hover:underline font-semibold text-center">
                             View My Strategic Compass
                         </a>
                     </div>
                 </div>
                 
                 <!-- Advanced Excel Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to Profitability</h3>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">The Challenge and the Insights</h4>
                     <p class="text-[#E0E8E1] leading-relaxed mb-4">
@@ -196,33 +214,33 @@
                     </ul>
 
                     <div class="mt-8 text-center">
-                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#FFD700] hover:underline font-semibold">
+                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
                             View My Path to Profitability
                         </a>
                     </div>
                 </div>
                 
                 <!-- MySQL Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">MySQL Project: Building a Strong Foundation</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
                         **The Challenge:** A company needed a solid foundation for their sales data, but their existing system was inefficient.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy: </p>
-                    <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
+                    <ul class="list-disc list-inside space-y-2 text-[#E0E0E0] text-sm pl-4">
                         <li class="list-item">I designed and built a robust relational database using **MySQL**.</li>
                         <li class="list-item">I used complex **SQL queries** to extract meaningful business insights.</li>
                         <li class="list-item">This project helped the client establish a reliable, efficient system for data storage and analysis, preparing them for future growth.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#FFD700] hover:underline font-semibold">
+                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
                             View My Foundation Plan
                         </a>
                     </div>
                 </div>
 
                 <!-- Marketing Analytics Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics: Optimizing the Customer Journey</h3>
                     <p class="text-[#E0E8E1] leading-relaxed">
                         **The Challenge:** A company's marketing efforts were falling short, and they didn't know why. They needed to understand their customer's journey better.
@@ -234,14 +252,14 @@
                         <li class="list-item">I conducted **A/B Testing** to guide them toward a more engaging and effective website design.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#FFD700] hover:underline font-semibold">
+                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
                             View My Project PDF
                         </a>
                     </div>
                 </div>
                 
                 <!-- HR Analytics Project -->
-                <div>
+                <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">HR Analytics: Building a Smarter Team</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
                         **The Challenge:** A company's HR processes were inefficient and they wanted to get ahead of employee attrition.
@@ -253,7 +271,7 @@
                         <li class="list-item">I developed a predictive model to forecast employee attrition, helping them solve talent retention issues before they began.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#FFD700] hover:underline font-semibold">
+                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
                             View My HR Analytics Presentation
                         </a>
                     </div>
@@ -262,70 +280,70 @@
         </section>
 
         <!-- Testimonials section -->
-        <section id="testimonials" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">What Our Clients Say</h2>
+        <section id="testimonials" class="section-card">
+            <h2 class="section-header">What Our Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555]">
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"Analyzeo ( )'s insights completely transformed our marketing strategy. Their team is knowledgeable, responsive, and a pleasure to work with."</p>
-                    <p class="text-right font-semibold text-[#A6E22E]">- Jane Davis, CEO of TechCorp</p>
+                    <p class="text-right font-semibold text-[#9FDF32]">- Jane Davis, CEO of TechCorp</p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555]">
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"The data analysis they provided was exactly what we needed to optimize our operations. We saw a significant increase in efficiency almost immediately."</p>
-                    <p class="text-right font-semibold text-[#A6E22E]">- John Chen, Operations Director</p>
+                    <p class="text-right font-semibold text-[#9FDF32]">- John Chen, Operations Director</p>
                 </div>
             </div>
         </section>
 
         <!-- Expertise section with tech tags -->
-        <section id="expertise" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">Our Expertise</h2>
+        <section id="expertise" class="section-card">
+            <h2 class="section-header">Our Expertise</h2>
             <div class="flex flex-wrap gap-2">
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">Visual Studio</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">Python</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">R</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">SQL</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">Power BI</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">Tableau</span>
-                <span class="bg-[#555555] text-[#D0D0D0] text-sm font-medium px-4 py-2 rounded-full border border-[#666666]">Advanced Excel</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Visual Studio</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Python</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">R</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">SQL</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Power BI</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Tableau</span>
+                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Advanced Excel</span>
             </div>
         </section>
 
         <!-- Recommendations section for data growth -->
-        <section id="recommendations" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">Our Recommendations for Data Growth</h2>
+        <section id="recommendations" class="section-card">
+            <h2 class="section-header">Our Recommendations for Data Growth</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Start with a Clear Question</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Start with a Clear Question</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Before you start collecting data, define the specific business question you want to answer. A clear objective ensures your analysis is focused and relevant.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Centralize Your Data</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Centralize Your Data</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Bring all your data sources into a single, unified location. This eliminates silos and provides a holistic view of your business, making analysis more efficient.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Prioritize Data Quality</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Prioritize Data Quality</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Garbage in, garbage out. Invest in data cleansing and validation to ensure the accuracy and reliability of your information. High-quality data leads to trustworthy insights.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Don't Be Afraid to Experiment</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Don't Be Afraid to Experiment</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Data analysis is an iterative process. Try new models, test different hypotheses, and explore new tools to uncover unexpected and valuable findings.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Laser-Focused Goal Setting</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Laser-Focused Goal Setting</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Define precise, measurable goals for your data initiatives. A focused approach ensures that your resources are directed toward achieving specific, high-impact results.
                     </p>
                 </div>
-                <div class="bg-[#454545] p-6 rounded-lg border border-[#555555] hover:shadow-md transition-shadow">
-                    <h3 class="font-semibold text-lg text-[#66D9EF] mb-2">Embrace Collaborative Insights</h3>
+                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Embrace Collaborative Insights</h3>
                     <p class="text-[#E0E0E0] text-sm">
                         Data comes alive when different parts "connect." Encourage collaboration across teams to combine diverse data sets and uncover powerful, cross-functional insights.
                     </p>
@@ -333,42 +351,52 @@
             </div>
         </section>
 
-        <!-- Contact Us section -->
-        <section id="contact" class="bg-[#3C3C3C] rounded-xl shadow-lg p-6 sm:p-8 mb-8 border border-[#505050]">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#A6E22E] border-b-2 border-[#66D9EF] pb-2 mb-4">Contact Us</h2>
-            <div class="space-y-4">
-                <p class="flex items-center text-[#F8F8F2]">
-                    <svg class="w-5 h-5 text-[#66D9EF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-                    <a href="mailto:analyzeo@proton.me" class="text-[#66D9EF] hover:underline">analyzeo@proton.me</a>
+        <!-- Contact Us section with a form for better interaction -->
+        <section id="contact" class="section-card">
+            <h2 class="section-header">Contact Us</h2>
+            <!-- Existing contact information -->
+            <div class="space-y-4 mb-8">
+                <p class="flex items-center text-[#E0E8E1]">
+                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    <a href="mailto:analyzeo@proton.me" class="text-[#00A3FF] hover:underline">analyzeo@proton.me</a>
                 </p>
-                <p class="flex items-center text-[#F8F2]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#66D9EF] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <p class="flex items-center text-[#E0E8E1]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#00A3FF] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a4 4 0 002.557 2.557l1.127-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <a href="tel:7027148551" class="text-[#66D9EF] hover:underline">(702) 714-8551</a>
+                    <a href="tel:7027148551" class="text-[#00A3FF] hover:underline">(702) 714-8551</a>
                 </p>
-                <p class="flex items-center text-[#F8F8F2]">
-                    <svg class="w-5 h-5 text-[#66D9EF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v2a1 1 0 001 1h10a1 1 0 001-1v-2l-2-2h-3l-2 2H4zm1-4a1 1 0 110-2 1 1 0 010 2z" clip-rule="evenodd"></path></svg>
-                    <a href="#" class="text-[#66D9EF] hover:underline">Las Vegas, Nevada 89115</a>
+                <p class="flex items-center text-[#E0E8E1]">
+                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v2a1 1 0 001 1h10a1 1 0 001-1v-2l-2-2h-3l-2 2H4zm1-4a1 1 0 110-2 1 1 0 010 2z" clip-rule="evenodd"></path></svg>
+                    <a href="#" class="text-[#00A3FF] hover:underline">Las Vegas, Nevada 89115</a>
                 </p>
             </div>
-        </section>
+          
+            <footer class="text-center text-sm text-gray-500 mt-8">
+                <p>&copy; 2023 Analyzeo ( ). All Rights Reserved.</p>
+            </footer>
+        </div>
 
-        <!-- Footer section -->
-        <footer class="text-center text-sm text-gray-500 mt-8">
-            <p>&copy; 2023 Analyzeo ( ). All Rights Reserved.</p>
-        </footer>
-    </div>
+    <!-- Back to top button -->
+    <a href="#top" id="back-to-top" class="hover:text-[#E0E8E1]"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg></a>
 
-    <!-- JavaScript for the animated background -->
+    <!-- JavaScript for the animated background and back-to-top button -->
     <script>
         window.onload = function() {
             const canvas = document.getElementById('bgCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
+            let codeDrops = [];
+            let pulses = [];
             const particleCount = 70;
             const maxDistance = 120; // Max distance for lines
             const particleSpeed = 0.5;
+            
+            // New variables for the 'COSMO' code rain
+            const cosmoLetters = ['C', 'O', 'S', 'M', 'O', '1', '0', '7', '4'];
+            let cosmoIndex = 0;
 
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -382,7 +410,7 @@
                     this.vx = (Math.random() - 0.5) * particleSpeed;
                     this.vy = (Math.random() - 0.5) * particleSpeed;
                     this.radius = 1;
-                    this.color = '#66D9EF';
+                    this.color = '#9FDF32';
                 }
 
                 update() {
@@ -405,12 +433,65 @@
                     ctx.closePath();
                 }
             }
+            
+            class CodeDrop {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = -10;
+                    this.speed = 0.5 + Math.random() * 1.5;
+                    this.character = cosmoLetters[cosmoIndex % cosmoLetters.length];
+                    cosmoIndex++;
+                    this.alpha = 1;
+                }
+
+                update() {
+                    this.y += this.speed;
+                    this.alpha -= 0.01;
+                }
+
+                draw() {
+                    ctx.fillStyle = `rgba(159, 223, 50, ${this.alpha})`;
+                    ctx.font = '10px Roboto Mono';
+                    ctx.fillText(this.character, this.x, this.y);
+                }
+            }
+
+            class Pulse {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = 1;
+                    this.alpha = 1;
+                }
+
+                update() {
+                    this.radius += 1;
+                    this.alpha -= 0.005;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(0, 163, 255, ${this.alpha})`;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
 
             function createParticles() {
                 particles = [];
                 for (let i = 0; i < particleCount; i++) {
                     particles.push(new Particle());
                 }
+            }
+            
+            function createCodeDrop() {
+                codeDrops.push(new CodeDrop());
+            }
+            
+            function createPulse() {
+                pulses.push(new Pulse(Math.random() * canvas.width, Math.random() * canvas.height));
             }
 
             function drawLines() {
@@ -424,7 +505,7 @@
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
                             ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(102, 217, 239, ${1 - (distance / maxDistance)})`;
+                            ctx.strokeStyle = `rgba(159, 223, 50, ${1 - (distance / maxDistance)})`;
                             ctx.lineWidth = 0.5;
                             ctx.stroke();
                             ctx.closePath();
@@ -435,13 +516,50 @@
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw particle network
                 drawLines();
                 particles.forEach(p => {
                     p.update();
                     p.draw();
                 });
+                
+                // Draw code drops
+                if (Math.random() > 0.95) { // Control the density
+                    createCodeDrop();
+                }
+                codeDrops.forEach((drop, index) => {
+                    drop.update();
+                    drop.draw();
+                    if (drop.alpha <= 0) {
+                        codeDrops.splice(index, 1);
+                    }
+                });
+                
+                // Draw superhero pulse
+                if (Math.random() > 0.99) { // Control the frequency
+                    createPulse();
+                }
+                pulses.forEach((pulse, index) => {
+                    pulse.update();
+                    pulse.draw();
+                    if (pulse.alpha <= 0) {
+                        pulses.splice(index, 1);
+                    }
+                });
+                
                 requestAnimationFrame(animate);
             }
+
+            // Back-to-top button logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
 
             resizeCanvas();
             createParticles();
