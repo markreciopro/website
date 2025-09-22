@@ -119,6 +119,35 @@
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 163, 255, 0.3);
         }
+        
+        /* Video container styling to center and control size */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 350px; /* Optimized for vertical video */
+            margin: 0 auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* NEW: This is the container that will crop the video */
+        .video-viewport {
+            height: 350px; /* NEW: Adjust this value to change the visible height of the video */
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Style for the iframe to fill its container */
+        .video-viewport iframe {
+            width: 100%;
+            height: 600px; /* Increased height for a larger vertical video */
+            border: none;
+            position: absolute;
+            top: -125px; /* NEW: Adjust this value to control which part of the video is visible. */
+        }
     </style>
 </head>
 <body class="bg-[#0d0f1b] text-[#E0E8E1]">
@@ -151,8 +180,11 @@
         <!-- About Us section, now containing the Freelance Consulting content -->
         <section id="about" class="section-card">
             <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
-            <div class="text-center">
-                <a href="https://ibb.co/PsVvj8Ds"><img src="https://i.ibb.co/LDsXRfND/Neon-Fox-Logo-with-Scarf.png" alt="Neon-Fox-Logo-with-Scarf" border="0" class="mx-auto my-4 w-48 h-auto"></a>
+            <div class="video-container my-4">
+                <!-- NEW: We wrap the iframe in a div for the cropping effect -->
+                <div class="video-viewport rounded-xl">
+                    <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full"></iframe>
+                </div>
             </div>
             <div class="text-[#E0E8E1] leading-relaxed mt-4">
                 <p class="text-lg font-semibold text-center mb-4">The Legend of Analyzeo</p>
@@ -240,7 +272,7 @@
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to Profitability</h3>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">The Challenge and the Insights</h4>
-                    <p class="text-[#E0E8E1] leading-relaxed mb-4">
+                    <p class="text-[#E0E8E1] leading-relaxed mb-6">
                         **The Challenge:** A company struggled with low gross margins and overbilling, but the problem was buried in scattered spreadsheets.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy: </p>
