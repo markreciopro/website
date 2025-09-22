@@ -1,64 +1,25 @@
-<!DOCTYPE html>
+
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyzeo ( ) - Your Partner in Data-Driven Growth</title>
+    <title>Analyzeo - Your Partner in Data-Driven Growth</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /*
-         * Custom styles for the dark, tech-inspired theme.
-         * The primary font is 'Roboto Mono' to give it a code-like, analytic feel.
-         */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
+        /* Base styles for the dark, tech-inspired theme. */
         body {
             font-family: 'Roboto Mono', monospace;
             overflow-x: hidden; /* Prevents horizontal scrollbar */
             background-color: #0d0f1b;
             color: #E0E8E1;
-        }
-
-        /* Hero and primary text styles */
-        .job-title-highlight {
-            color: #9FDF32;
-        }
-        .text-action {
-            color: #00A3FF;
-            font-weight: 500;
-        }
-
-        /* Card and section styles */
-        .section-card {
-            background-color: rgba(29, 31, 46, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(159, 223, 50, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-in-out;
-            opacity: 0; /* Hidden by default for scroll animation */
-            transform: translateY(20px);
-        }
-        .section-card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section-header {
-            color: #9FDF32;
-            border-bottom: 2px solid #00A3FF;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .project-card {
-            background-color: rgba(29, 31, 46, 0.6);
-            border: 1px solid rgba(159, 223, 50, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            border-color: #00A3FF;
         }
 
         /* Animated background canvas */
@@ -69,6 +30,54 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+        }
+
+        /* Hero and primary text styles */
+        .job-title-highlight {
+            color: #9FDF32;
+        }
+
+        .text-action {
+            color: #00A3FF;
+            font-weight: 500;
+        }
+
+        /* Section card styles with glassmorphism effect */
+        .section-card {
+            background-color: rgba(29, 31, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(159, 223, 50, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            color: #9FDF32;
+            border-bottom: 2px solid #00A3FF;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card {
+            background-color: rgba(29, 31, 46, 0.6);
+            border: 1px solid rgba(159, 223, 50, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: #00A3FF;
         }
 
         /* Back to top button style */
@@ -87,6 +96,7 @@
             z-index: 1000;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
         #back-to-top.show {
             opacity: 1;
             visibility: visible;
@@ -102,10 +112,12 @@
             color: #E0E8E1;
             transition: border-color 0.3s ease;
         }
+
         .form-input:focus {
             outline: none;
             border-color: #00A3FF;
         }
+
         .submit-btn {
             background: linear-gradient(90deg, #9FDF32, #00A3FF);
             color: #0d0f1b;
@@ -114,55 +126,47 @@
             border-radius: 0.5rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
         .submit-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 163, 255, 0.3);
         }
-        
-        /* Video container styling to center and control size */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 350px; /* Optimized for vertical video */
-            margin: 0 auto;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* This is the container that will crop the video */
+
         .video-viewport {
-            height: 350px; /* Adjust this value to change the visible height of the video */
+            height: 350px;
             width: 100%;
             overflow: hidden;
             position: relative;
         }
 
-        /* Style for the iframe to fill its container */
         .video-viewport iframe {
             width: 100%;
-            height: 600px; /* Increased height for a larger vertical video */
+            height: 600px;
             border: none;
             position: absolute;
-            top: -125px; /* Adjust this value to control which part of the video is visible. */
+            top: -125px;
         }
     </style>
 </head>
+
 <body class="bg-[#0d0f1b] text-[#E0E8E1]">
 
+    <!-- Animated Background Canvas -->
     <canvas id="bgCanvas"></canvas>
 
+    <!-- Main Content Container -->
     <div class="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
+        <!-- Sticky Navigation Bar -->
         <nav id="navbar" class="sticky top-0 bg-transparent backdrop-blur-sm rounded-xl shadow-lg p-4 mb-8 flex flex-wrap justify-center z-50 transition-colors duration-300">
-            <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">About</a>
-            <a href="#services" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Services</a>
-            <a href="#projects" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Projects</a>
-            <a href="#testimonials" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Testimonials</a>
-            <a href="#contact" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Contact</a>
+            <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="About section">About</a>
+            <a href="#services" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Services section">Services</a>
+            <a href="#projects" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Projects section">Projects</a>
+            <a href="#testimonials" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Testimonials section">Testimonials</a>
+            <a href="#contact" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Contact section">Contact</a>
         </nav>
 
+        <!-- Hero Section -->
         <header class="text-center py-16">
             <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#E0E8E1] leading-tight opacity-0 transform translate-y-4 transition-all duration-700">
                 <span class="job-title-highlight">Analyzeo</span> <span class="text-action">()</span>
@@ -172,25 +176,34 @@
             </p>
         </header>
 
+        <!-- About Section -->
         <section id="about" class="section-card">
-            <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
-            <div class="video-container my-4">
+            <h2 class="text-2xl font-bold section-header">The Legend of Analyzeo</h2>
+            <div class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
                 <div class="video-viewport rounded-xl">
-                    <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full"></iframe>
+                    <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" title="The Legend of Analyzeo - A data story."></iframe>
                 </div>
             </div>
             <div class="text-[#E0E8E1] leading-relaxed mt-4">
-                <p class="text-lg font-semibold text-center mb-4">The Legend of Analyzeo</p>
-                <p class="mb-4">In the dense digital forest of the modern business world, a new hero emerged: Analyzeo, the Apex Strategist. This cunning fox was built for the information age, a silent force against the chaos of unorganized data and the villains of inefficiency.
-
-Analyzeo was a master of the digital realm, his suit woven with circuit patterns and his neon scarf shimmering with the energy of a thousand algorithms. With just a glance, he could predict market shifts and expose a competitor’s weaknesses. His powers were a refined arsenal of analytical prowess, from advanced statistical modeling to machine learning, allowing him to sift through petabytes of data in a heartbeat.
-
-He was a hero found in the quiet confidence of small business owners. He empowered a struggling startup to become a market leader and helped a family business thrive by revealing untapped customer segments and streamlining their operations.
-
-For Analyzeo, the true reward was watching businesses take control of their own destiny, using data as their greatest weapon. He was the tactician, the cunning fox who always knew the smartest move, turning raw data into a clear path forward for those wise enough to follow his lead.</p>
+                <p class="text-lg font-semibold text-center mb-4">Our partnership, forged in the heart of data.</p>
+                <article class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p>
+                        In the dense digital forest of the modern business world, a new hero prowls. We are Analyzeo, a collective of cunning fox analysts whose intellect is as sharp as our reflexes. Our partnership, built for the information age, fights the chaos of unorganized data and the villains of inefficiency with a unified purpose.
+                    </p>
+                    <p>
+                        As masters of the digital realm, our suits, woven with circuit patterns, and our neon scarves, shimmering with the energy of a thousand algorithms, are a testament to our expertise. With a single glance, we can predict market shifts and expose a competitor’s weaknesses. Our powers are a refined arsenal of analytical prowess, from <strong>financial and market analytics</strong> that forecast trends, to <strong>business analytics</strong> that optimize operations, and even <strong>HR analytics</strong> that reveal a team's true potential. We hunt through petabytes of data in a heartbeat, identifying the subtle correlations that become a winning strategy.
+                    </p>
+                    <p>
+                        We are heroes found in the quiet confidence of small and mid-sized companies. Our mission is to empower these businesses, turning a struggling startup into a market leader and helping a family business thrive by revealing untapped customer segments and streamlining their operations.
+                    </p>
+                    <p>
+                        For us, the true reward is watching a business take control of its own destiny, using data as its greatest weapon. As a partnership, we are the cunning tacticians who always know the smartest move, turning raw data into a clear path forward for those wise enough to follow our lead.
+                    </p>
+                </article>
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="section-card">
             <h2 class="section-header">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -233,118 +246,122 @@ For Analyzeo, the true reward was watching businesses take control of their own 
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="section-card">
             <h2 class="section-header">My Chronicles of Victory</h2>
-            
             <div class="space-y-12">
+                <!-- Avoxi Billing Analysis Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Avoxi Billing Analysis: Defeating Hidden Costs</h3>
                     <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
-                        **The Challenge:** A company was losing money on billing, but they couldn't see where. The data was fragmented and disorganized.
+                        <strong>The Challenge:</strong> A company was losing money on billing, but they couldn't see where. The data was fragmented and disorganized.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I used **Python** and **Pandas** to consolidate all the fragmented data, creating a single, clear dataset.</li>
+                        <li class="list-item">I used <strong>Python</strong> and <strong>Pandas</strong> to consolidate all the fragmented data, creating a single, clear dataset.</li>
                         <li class="list-item">I analyzed the data to expose hidden discrepancies like low gross margins and overbilling from specific vendors.</li>
-                        <li class="list-item">I created clear reports and visualizations with **Matplotlib** and **Seaborn** that showed the company exactly where they were losing money.</li>
+                        <li class="list-item">I created clear reports and visualizations with <strong>Matplotlib</strong> and <strong>Seaborn</strong> that showed the company exactly where they were losing money.</li>
                     </ul>
                 </div>
-                
+
+                <!-- Power BI Dashboard Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Power BI Dashboard: A Strategic Compass</h3>
                     <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
-                        **The Challenge:** A business needed to make data-driven decisions but couldn't get a clear, real-time picture of their performance.
+                        <strong>The Challenge:</strong> A business needed to make data-driven decisions but couldn't get a clear, real-time picture of their performance.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I built a dynamic **Power BI dashboard** that connected all their data sources.</li>
+                        <li class="list-item">I built a dynamic <strong>Power BI dashboard</strong> that connected all their data sources.</li>
                         <li class="list-item">I cleaned and transformed the raw data using Power Query to ensure reliability.</li>
                         <li class="list-item">The dashboard now serves as a real-time, interactive map, allowing them to explore key metrics and make data-driven decisions with confidence.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#00A3FF] hover:underline font-semibold text-center">
+                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#00A3FF] hover:underline font-semibold text-center" aria-label="View Power BI Strategic Compass">
                             View My Strategic Compass
                         </a>
                     </div>
                 </div>
-                
+
+                <!-- Advanced Excel Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to Profitability</h3>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">The Challenge and the Insights</h4>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        **The Challenge:** A company struggled with low gross margins and overbilling, but the problem was buried in scattered spreadsheets.
+                        <strong>The Challenge:</strong> A company struggled with low gross margins and overbilling, but the problem was buried in scattered spreadsheets.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
                         <li>I guided them to combine their separate monthly sheets into a single, master data source.</li>
                         <li>My analysis revealed that a specific vendor's billing model was a major source of loss.</li>
                         <li>I showed them how their flat-rate pricing was costing them money on many calls, leading to a new pricing strategy.</li>
                     </ul>
-
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">Recommendations for a New Path</h4>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
-                        <li><strong class="font-semibold">Renegotiate or Switch:</strong> I advised them to renegotiate with the low-margin vendors, providing them with the data they needed to back up their claims.</li>
-                        <li><strong class="font-semibold">Optimize Rates:</strong> I presented a data-backed case for tiered pricing, showing how it would help them reach their 45% gross margin target.</li>
-                        <li class="list-item">**Automate for the Future:** I outlined a plan for an automated system that would allow them to perform instant "what-if" analyses for future decisions.</li>
+                        <li><strong>Renegotiate or Switch:</strong> I advised them to renegotiate with the low-margin vendors, providing them with the data they needed to back up their claims.</li>
+                        <li><strong>Optimize Rates:</strong> I presented a data-backed case for tiered pricing, showing how it would help them reach their 45% gross margin target.</li>
+                        <li><strong>Automate for the Future:</strong> I outlined a plan for an automated system that would allow them to perform instant "what-if" analyses for future decisions.</li>
                     </ul>
-
                     <div class="mt-8 text-center">
-                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
+                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View Advanced Excel Path to Profitability">
                             View My Path to Profitability
                         </a>
                     </div>
                 </div>
-                
+
+                <!-- MySQL Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">MySQL Project: Building a Strong Foundation</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        **The Challenge:** A company needed a solid foundation for their sales data, but their existing system was inefficient.
+                        <strong>The Challenge:</strong> A company needed a solid foundation for their sales data, but their existing system was inefficient.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E0E0] text-sm pl-4">
-                        <li class="list-item">I designed and built a robust relational database using **MySQL**.</li>
-                        <li class="list-item">I used complex **SQL queries** to extract meaningful business insights.</li>
+                        <li class="list-item">I designed and built a robust relational database using <strong>MySQL</strong>.</li>
+                        <li class="list-item">I used complex <strong>SQL queries</strong> to extract meaningful business insights.</li>
                         <li class="list-item">This project helped the client establish a reliable, efficient system for data storage and analysis, preparing them for future growth.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
+                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View MySQL Foundation Plan">
                             View My Foundation Plan
                         </a>
                     </div>
                 </div>
 
+                <!-- Marketing Analytics Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics: Optimizing the Customer Journey</h3>
                     <p class="text-[#E0E8E1] leading-relaxed">
-                        **The Challenge:** A company's marketing efforts were falling short, and they didn't know why. They needed to understand their customer's journey better.
+                        <strong>The Challenge:</strong> A company's marketing efforts were falling short, and they didn't know why. They needed to understand their customer's journey better.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mt-4">
                         <li class="list-item">I improved their marketing by creating an article with unique keywords, driving new traffic.</li>
                         <li class="list-item">I proposed a diagnostic assessment to solve issues like high bounce rates and low conversion.</li>
-                        <li class="list-item">I conducted **A/B Testing** to guide them toward a more engaging and effective website design.</li>
-                        <li class="list-item">I leveraged **R programming** to perform in-depth statistical analysis on customer behavior data.</li>
+                        <li class="list-item">I conducted <strong>A/B Testing</strong> to guide them toward a more engaging and effective website design.</li>
+                        <li class="list-item">I leveraged <strong>R programming</strong> to perform in-depth statistical analysis on customer behavior data.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
+                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View Marketing Project PDF">
                             View My Project PDF
                         </a>
                     </div>
                 </div>
-                
+
+                <!-- HR Analytics Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">HR Analytics: Building a Smarter Team</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        **The Challenge:** A company's HR processes were inefficient and they wanted to get ahead of employee attrition.
+                        <strong>The Challenge:</strong> A company's HR processes were inefficient and they wanted to get ahead of employee attrition.
                     </p>
-                    <p class="text-action mt-2 mb-2">My Strategy: </p>
+                    <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I provided a comprehensive **HR analytics** solution using **Python** to streamline their recruitment.</li>
-                        <li class="list-item">I built a **resume parsing** script to automate the extraction of key information, saving countless hours.</li>
+                        <li class="list-item">I provided a comprehensive <strong>HR analytics</strong> solution using <strong>Python</strong> to streamline their recruitment.</li>
+                        <li class="list-item">I built a <strong>resume parsing</strong> script to automate the extraction of key information, saving countless hours.</li>
                         <li class="list-item">I developed a predictive model to forecast employee attrition, helping them solve talent retention issues before they began.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
+                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View HR Analytics Presentation">
                             View My HR Analytics Presentation
                         </a>
                     </div>
@@ -352,21 +369,23 @@ For Analyzeo, the true reward was watching businesses take control of their own 
             </div>
         </section>
 
+        <!-- Hero's Journey Video Section -->
         <section id="heros-journey" class="section-card">
             <h2 class="section-header">The Hero's Journey in Data</h2>
             <p class="text-center text-[#E0E8E1] mb-6">See how a professional navigates the complexities of data to achieve impactful results and overcome challenges in the real world.</p>
-            <div class="video-container my-4">
+            <div class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
                 <div class="video-viewport rounded-xl">
-                    <iframe src="https://www.youtube.com/embed/SvF9vh7TmfM?autoplay=1&loop=1&playlist=SvF9vh7TmfM&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full"></iframe>
+                    <iframe src="https://www.youtube.com/embed/SvF9vh7TmfM?autoplay=1&loop=1&playlist=SvF9vh7TmfM&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" title="The Hero's Journey - A video on data insights."></iframe>
                 </div>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section id="testimonials" class="section-card">
             <h2 class="section-header">What Our Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
-                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"Analyzeo ( )'s insights completely transformed our marketing strategy. Their team is knowledgeable, responsive, and a pleasure to work with."</p>
+                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"Analyzeo ()'s insights completely transformed our marketing strategy. Their team is knowledgeable, responsive, and a pleasure to work with."</p>
                     <p class="text-right font-semibold text-[#9FDF32]">- Jane Davis, CEO of TechCorp</p>
                 </div>
                 <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
@@ -376,6 +395,7 @@ For Analyzeo, the true reward was watching businesses take control of their own 
             </div>
         </section>
 
+        <!-- Expertise Section -->
         <section id="expertise" class="section-card">
             <h2 class="section-header">Our Expertise</h2>
             <div class="flex flex-wrap gap-2">
@@ -389,6 +409,7 @@ For Analyzeo, the true reward was watching businesses take control of their own 
             </div>
         </section>
 
+        <!-- Recommendations Section -->
         <section id="recommendations" class="section-card">
             <h2 class="section-header">Our Recommendations for Data Growth</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -431,6 +452,7 @@ For Analyzeo, the true reward was watching businesses take control of their own 
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="section-card">
             <h2 class="section-header">Contact Us</h2>
             <p class="text-center text-[#E0E8E1] mb-6">Let's connect and transform your data into growth. Send us a message!</p>
@@ -458,249 +480,123 @@ For Analyzeo, the true reward was watching businesses take control of their own 
                     Mark Anthony Recio
                 </p>
                 <p class="flex items-center text-[#E0E8E1]">
-                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                    </svg>
                     <a href="mailto:analyzeo@proton.me" class="text-[#00A3FF] hover:underline">analyzeo@proton.me</a>
                 </p>
                 <p class="flex items-center text-[#E0E8E1]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#00A3FF] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a4 4 0 002.557 2.557l1.127-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <a href="tel:7027148551" class="text-[#00A3FF] hover:underline">(702) 714-8551</a>
+                    <a href="https://www.linkedin.com/in/markanthonyrecio/" target="_blank" class="text-[#00A3FF] hover:underline">LinkedIn Profile</a>
                 </p>
                 <p class="flex items-center text-[#E0E8E1]">
-                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v2a1 1 0 001 1h10a1 1 0 001-1v-2l-2-2h-3l-2 2H4zm1-4a1 1 0 110-2 1 1 0 010 2z" clip-rule="evenodd"></path></svg>
-                    <a href="#" class="text-[#00A3FF] hover:underline">Las Vegas, Nevada 89115</a>
+                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1.53 13.53a.75.75 0 01-1.06-1.06L9.94 10.5l-2.53-2.53a.75.75 0 011.06-1.06l3 3a.75.75 0 010 1.06l-3 3z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="https://github.com/recio-tech" target="_blank" class="text-[#00A3FF] hover:underline">GitHub Profile</a>
                 </p>
             </div>
-            
-            <footer class="text-center text-sm text-gray-500 mt-8">
-                <p>&copy; 2023 Analyzeo ( ). All Rights Reserved.</p>
-            </footer>
-        </div>
+        </section>
+    </div>
 
-    <a href="#top" id="back-to-top" class="hover:text-[#E0E8E1]"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg></a>
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to top">
+        ↑ Top
+    </button>
 
     <script>
-        window.onload = function() {
+        document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('bgCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            let pulses = [];
+            const particleCount = 200;
             let mouse = { x: null, y: null };
+            let animationFrameId = null;
 
-            // Configuration constants
-            const PARTICLE_COUNT = 80;
-            const PARTICLE_SPEED = 0.5;
-            const MAX_LINE_DISTANCE = 120;
-            const GRID_SIZE = 40;
-            const FADE_OUT_SPEED = 0.005;
-
-            // Handle window resizing to keep the canvas full-screen
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
 
-            // Store mouse coordinates
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.x;
-                mouse.y = e.y;
-            });
-
-            // Particle class for the flowing points
+            // Class for each individual particle
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * PARTICLE_SPEED;
-                    this.vy = (Math.random() - 0.5) * PARTICLE_SPEED;
-                    this.radius = 1.5;
+                    this.size = Math.random() * 2 + 1;
+                    this.baseSpeedX = (Math.random() - 0.5) * 0.2;
+                    this.baseSpeedY = (Math.random() - 0.5) * 0.2;
+                    this.color = `#00a3ff`;
                 }
 
                 update() {
-                    // Update position
-                    this.x += this.vx;
-                    this.y += this.vy;
+                    this.x += this.baseSpeedX;
+                    this.y += this.baseSpeedY;
 
-                    // Reverse direction on hitting edges
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                    // Bounce off walls
+                    if (this.x < 0 || this.x > canvas.width) this.baseSpeedX = -this.baseSpeedX;
+                    if (this.y < 0 || this.y > canvas.height) this.baseSpeedY = -this.baseSpeedY;
                 }
 
                 draw() {
-                    // Draw a glowing particle
-                    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
-                    gradient.addColorStop(0, '#9FDF32');
-                    gradient.addColorStop(1, 'rgba(159, 223, 50, 0)');
-                    ctx.fillStyle = gradient;
+                    ctx.fillStyle = this.color;
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
-                    ctx.closePath();
                 }
             }
 
-            // Pulse class for expanding circles
-            class Pulse {
-                constructor(x, y) {
-                    this.x = x;
-                    this.y = y;
-                    this.radius = 1;
-                    this.alpha = 1;
-                }
-
-                update() {
-                    this.radius += 1;
-                    this.alpha -= FADE_OUT_SPEED;
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.strokeStyle = `rgba(0, 163, 255, ${this.alpha})`;
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-                    ctx.closePath();
+            // Initializes particles
+            function init() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
                 }
             }
 
-            // Grid class for the background digital network
-            class Grid {
-                constructor() {
-                    this.points = [];
-                    for (let x = 0; x < canvas.width; x += GRID_SIZE) {
-                        for (let y = 0; y < canvas.height; y += GRID_SIZE) {
-                            this.points.push({ x: x, y: y, pulse: Math.random() });
-                        }
-                    }
-                }
-
-                update() {
-                    this.points.forEach(p => {
-                        // Subtle pulsing effect
-                        p.pulse += 0.01;
-                        if (p.pulse > Math.PI * 2) {
-                            p.pulse = 0;
-                        }
-
-                        // Mouse interaction: push points away from the cursor
-                        if (mouse.x !== null) {
-                            const dx = p.x - mouse.x;
-                            const dy = p.y - mouse.y;
-                            const dist = Math.sqrt(dx * dx + dy * dy);
-                            if (dist < 150) {
-                                const force = (150 - dist) / 150;
-                                p.x += dx * force * 0.05;
-                                p.y += dy * force * 0.05;
-                            }
-                            // Return points to original position
-                            p.x = p.x * 0.99 + (p.x > 0 ? GRID_SIZE : 0) * 0.01;
-                            p.y = p.y * 0.99 + (p.y > 0 ? GRID_SIZE : 0) * 0.01;
-                        }
-                    });
-                }
-
-                draw() {
-                    this.points.forEach(p1 => {
-                        // Draw the point itself with pulsing alpha
-                        const alpha = 0.1 + Math.sin(p1.pulse) * 0.1;
-                        ctx.fillStyle = `rgba(159, 223, 50, ${alpha})`;
-                        ctx.fillRect(p1.x, p1.y, 1, 1);
-
-                        // Draw lines to nearby points
-                        this.points.forEach(p2 => {
-                            const dist = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                            if (dist < 50) {
-                                const lineAlpha = (1 - dist / 50) * (alpha * 0.5);
-                                ctx.strokeStyle = `rgba(0, 163, 255, ${lineAlpha})`;
-                                ctx.lineWidth = 0.5;
-                                ctx.beginPath();
-                                ctx.moveTo(p1.x, p1.y);
-                                ctx.lineTo(p2.x, p2.y);
-                                ctx.stroke();
-                            }
-                        });
-                    });
-                }
-            }
-
-            // Initialize all animated elements
-            const grid = new Grid();
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                particles.push(new Particle());
-            }
-            setInterval(() => {
-                pulses.push(new Pulse(Math.random() * canvas.width, Math.random() * canvas.height));
-            }, 2000);
-
-            // Main animation loop
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                // Update and draw the grid
-                grid.update();
-                grid.draw();
-
-                // Update and draw particles
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-
-                // Draw lines between close particles
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const p1 = particles[i];
-                        const p2 = particles[j];
-                        const distance = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
-
-                        if (distance < MAX_LINE_DISTANCE) {
-                            const lineAlpha = 1 - (distance / MAX_LINE_DISTANCE);
-                            const gradient = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-                            gradient.addColorStop(0, `rgba(159, 223, 50, ${lineAlpha})`);
-                            gradient.addColorStop(1, `rgba(0, 163, 255, ${lineAlpha})`);
-                            ctx.strokeStyle = gradient;
-                            ctx.lineWidth = 0.5;
+            // Draws lines between nearby particles
+            function connect() {
+                let opacity = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let distance = Math.sqrt(
+                            ((particles[a].x - particles[b].x) ** 2) +
+                            ((particles[a].y - particles[b].y) ** 2)
+                        );
+                        if (distance < 100) {
+                            opacity = 1 - (distance / 100);
+                            ctx.strokeStyle = `rgba(159, 223, 50, ${opacity})`;
+                            ctx.lineWidth = 1;
                             ctx.beginPath();
-                            ctx.moveTo(p1.x, p1.y);
-                            ctx.lineTo(p2.x, p2.y);
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
                             ctx.stroke();
-                            ctx.closePath();
                         }
                     }
                 }
-
-                // Update and draw pulses, filter out dead ones
-                pulses = pulses.filter(p => p.alpha > 0);
-                pulses.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-
-                requestAnimationFrame(animate);
             }
 
-            // Back-to-top button logic
-            const backToTopButton = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
+            // The main animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas for a crisp animation
+                connect();
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
                 }
-            });
+                animationFrameId = requestAnimationFrame(animate);
+            }
 
-            // Intersection Observer for section fade-in animation
-            const sections = document.querySelectorAll('.section-card');
+            // Intersection Observer to handle section animations on scroll
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.2
+                threshold: 0.1
             };
+
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -710,18 +606,56 @@ For Analyzeo, the true reward was watching businesses take control of their own 
                 });
             }, observerOptions);
 
-            sections.forEach(section => {
-                observer.observe(section);
+            document.querySelectorAll('.section-card').forEach(card => {
+                observer.observe(card);
             });
 
-            // Initial animations on page load
-            document.getElementById('hero-title').style.opacity = '1';
-            document.getElementById('hero-title').style.transform = 'translateY(0)';
-            document.getElementById('hero-subtitle').style.opacity = '1';
-            document.getElementById('hero-subtitle').style.transform = 'translateY(0)';
+            // Back to top button logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
+            // Contact Form Submission (using fetch to prevent page reload)
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formMessage.textContent = "Thank you! Your message has been sent successfully.";
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('text-[#9FDF32]');
+                    contactForm.reset();
+                } else {
+                    formMessage.textContent = "Oops! There was a problem. Please try again later.";
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('text-red-500');
+                }
+            });
+
+            // Start the animations and observers
+            resizeCanvas();
+            init();
             animate();
-        };
+        });
     </script>
+
 </body>
 </html>
