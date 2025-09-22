@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyzeo ( ) - Your Partner in Data-Driven Growth</title>
-    <!-- Load Tailwind CSS from CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /*
@@ -132,9 +131,9 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
         
-        /* NEW: This is the container that will crop the video */
+        /* This is the container that will crop the video */
         .video-viewport {
-            height: 350px; /* NEW: Adjust this value to change the visible height of the video */
+            height: 350px; /* Adjust this value to change the visible height of the video */
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -146,19 +145,16 @@
             height: 600px; /* Increased height for a larger vertical video */
             border: none;
             position: absolute;
-            top: -125px; /* NEW: Adjust this value to control which part of the video is visible. */
+            top: -125px; /* Adjust this value to control which part of the video is visible. */
         }
     </style>
 </head>
 <body class="bg-[#0d0f1b] text-[#E0E8E1]">
 
-    <!-- Animated background canvas -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Main content container, centered and responsive -->
     <div class="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
-        <!-- Sticky navigation bar at the top -->
         <nav id="navbar" class="sticky top-0 bg-transparent backdrop-blur-sm rounded-xl shadow-lg p-4 mb-8 flex flex-wrap justify-center z-50 transition-colors duration-300">
             <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">About</a>
             <a href="#services" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Services</a>
@@ -167,7 +163,6 @@
             <a href="#contact" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors">Contact</a>
         </nav>
 
-        <!-- Header section -->
         <header class="text-center py-16">
             <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#E0E8E1] leading-tight opacity-0 transform translate-y-4 transition-all duration-700">
                 <span class="job-title-highlight">Analyzeo</span> <span class="text-action">()</span>
@@ -177,11 +172,9 @@
             </p>
         </header>
 
-        <!-- About Us section, now containing the Freelance Consulting content -->
         <section id="about" class="section-card">
             <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
             <div class="video-container my-4">
-                <!-- NEW: We wrap the iframe in a div for the cropping effect -->
                 <div class="video-viewport rounded-xl">
                     <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full"></iframe>
                 </div>
@@ -193,7 +186,6 @@
             </div>
         </section>
 
-        <!-- Services section with a grid layout and hover effects -->
         <section id="services" class="section-card">
             <h2 class="section-header">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -227,15 +219,19 @@
                         Utilizing data to uncover insights that optimize operations and drive strategic business growth.
                     </p>
                 </div>
+                <div class="project-card p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Marketing Analytics</h3>
+                    <p class="text-[#E0E0E0] text-sm">
+                        Using data to optimize marketing campaigns, improve customer engagement, and boost conversion rates.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- Projects section with video and project details -->
         <section id="projects" class="section-card">
             <h2 class="section-header">My Chronicles of Victory</h2>
             
             <div class="space-y-12">
-                <!-- Python Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Avoxi Billing Analysis: Defeating Hidden Costs</h3>
                     <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
@@ -249,7 +245,6 @@
                     </ul>
                 </div>
                 
-                <!-- Power BI Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Power BI Dashboard: A Strategic Compass</h3>
                     <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
@@ -268,7 +263,6 @@
                     </div>
                 </div>
                 
-                <!-- Advanced Excel Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to Profitability</h3>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">The Challenge and the Insights</h4>
@@ -296,7 +290,6 @@
                     </div>
                 </div>
                 
-                <!-- MySQL Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">MySQL Project: Building a Strong Foundation</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
@@ -315,7 +308,6 @@
                     </div>
                 </div>
 
-                <!-- Marketing Analytics Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics: Optimizing the Customer Journey</h3>
                     <p class="text-[#E0E8E1] leading-relaxed">
@@ -326,6 +318,7 @@
                         <li class="list-item">I improved their marketing by creating an article with unique keywords, driving new traffic.</li>
                         <li class="list-item">I proposed a diagnostic assessment to solve issues like high bounce rates and low conversion.</li>
                         <li class="list-item">I conducted **A/B Testing** to guide them toward a more engaging and effective website design.</li>
+                        <li class="list-item">I leveraged **R programming** to perform in-depth statistical analysis on customer behavior data.</li>
                     </ul>
                     <div class="mt-8 text-center">
                         <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold">
@@ -334,7 +327,6 @@
                     </div>
                 </div>
                 
-                <!-- HR Analytics Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">HR Analytics: Building a Smarter Team</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
@@ -355,7 +347,16 @@
             </div>
         </section>
 
-        <!-- Testimonials section -->
+        <section id="heros-journey" class="section-card">
+            <h2 class="section-header">The Hero's Journey in Data</h2>
+            <p class="text-center text-[#E0E8E1] mb-6">See how a professional navigates the complexities of data to achieve impactful results and overcome challenges in the real world.</p>
+            <div class="video-container my-4">
+                <div class="video-viewport rounded-xl">
+                    <iframe src="https://www.youtube.com/embed/SvF9vh7TmfM?autoplay=1&loop=1&playlist=SvF9vh7TmfM&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full"></iframe>
+                </div>
+            </div>
+        </section>
+
         <section id="testimonials" class="section-card">
             <h2 class="section-header">What Our Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -370,7 +371,6 @@
             </div>
         </section>
 
-        <!-- Expertise section with tech tags -->
         <section id="expertise" class="section-card">
             <h2 class="section-header">Our Expertise</h2>
             <div class="flex flex-wrap gap-2">
@@ -384,7 +384,6 @@
             </div>
         </section>
 
-        <!-- Recommendations section for data growth -->
         <section id="recommendations" class="section-card">
             <h2 class="section-header">Our Recommendations for Data Growth</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -427,7 +426,6 @@
             </div>
         </section>
 
-        <!-- Contact Us section with a form for better interaction -->
         <section id="contact" class="section-card">
             <h2 class="section-header">Contact Us</h2>
             <p class="text-center text-[#E0E8E1] mb-6">Let's connect and transform your data into growth. Send us a message!</p>
@@ -450,7 +448,6 @@
             </form>
             <div id="formMessage" class="mt-4 text-center hidden"></div>
 
-            <!-- Existing contact information -->
             <div class="space-y-4 mt-8 pt-8 border-t border-gray-700">
                 <p class="flex items-center text-lg text-[#E0E8E1] font-semibold">
                     Mark Anthony Recio
@@ -476,12 +473,10 @@
             </footer>
         </div>
 
-    <!-- Back to top button -->
     <a href="#top" id="back-to-top" class="hover:text-[#E0E8E1]"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg></a>
 
-    <!-- JavaScript for the animated background and back-to-top button -->
     <script>
         window.onload = function() {
             const canvas = document.getElementById('bgCanvas');
