@@ -1,38 +1,27 @@
-
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyzeo - Your Partner in Data-Driven Growth</title>
-    
-    <!-- Tailwind CSS CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts - Roboto Mono -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* Base styles for the dark, tech-inspired theme. */
+        /* Base Styles */
         body {
             font-family: 'Roboto Mono', monospace;
-            overflow-x: hidden; /* Prevents horizontal scrollbar */
+            overflow-x: hidden;
             background-color: #0d0f1b;
             color: #E0E8E1;
         }
 
-        /* Animated background canvas */
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* Hero and primary text styles */
+        /* Utility Classes */
         .job-title-highlight {
             color: #9FDF32;
         }
@@ -42,7 +31,7 @@
             font-weight: 500;
         }
 
-        /* Section card styles with glassmorphism effect */
+        /* Section Card Styles with Glassmorphism Effect */
         .section-card {
             background-color: rgba(29, 31, 46, 0.8);
             backdrop-filter: blur(10px);
@@ -80,7 +69,7 @@
             border-color: #00A3FF;
         }
 
-        /* Back to top button style */
+        /* Back to Top Button */
         #back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -102,7 +91,7 @@
             visibility: visible;
         }
 
-        /* Contact form styling */
+        /* Contact Form */
         .form-input {
             width: 100%;
             background-color: rgba(15, 17, 28, 0.5);
@@ -132,85 +121,131 @@
             box-shadow: 0 4px 15px rgba(0, 163, 255, 0.3);
         }
 
-        .video-viewport {
-            height: 350px;
-            width: 100%;
-            overflow: hidden;
+        /* Video Frame Styling for a better responsive design */
+        .video-container {
             position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
         }
 
-        .video-viewport iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
+        .video-container iframe {
             position: absolute;
-            top: -125px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Navbar */
+        .sticky-nav {
+            background-color: rgba(13, 15, 27, 0.8);
+        }
+
+        /* New Animated Canvas Background */
+        #animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-color: #0d0f1b;
         }
     </style>
 </head>
 
 <body class="bg-[#0d0f1b] text-[#E0E8E1]">
 
-    <!-- Animated Background Canvas -->
-    <canvas id="bgCanvas"></canvas>
+    <canvas id="animated-bg"></canvas>
 
-    <!-- Main Content Container -->
+    <a href="#top" id="back-to-top" class="hidden md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </a>
+
     <div class="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
-        <!-- Sticky Navigation Bar -->
-        <nav id="navbar" class="sticky top-0 bg-transparent backdrop-blur-sm rounded-xl shadow-lg p-4 mb-8 flex flex-wrap justify-center z-50 transition-colors duration-300">
-            <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="About section">About</a>
-            <a href="#services" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Services section">Services</a>
-            <a href="#projects" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Projects section">Projects</a>
-            <a href="#testimonials" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Testimonials section">Testimonials</a>
-            <a href="#contact" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors" aria-label="Contact section">Contact</a>
+        <nav id="navbar"
+            class="sticky top-0 bg-transparent backdrop-blur-sm rounded-xl shadow-lg p-4 mb-8 flex flex-wrap justify-center z-50 transition-colors duration-300">
+            <a href="#about" class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors"
+                aria-label="About section">About</a>
+            <a href="#services"
+                class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors"
+                aria-label="Services section">Services</a>
+            <a href="#projects"
+                class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors"
+                aria-label="Projects section">Projects</a>
+            <a href="#testimonials"
+                class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors"
+                aria-label="Testimonials section">Testimonials</a>
+            <a href="#contact"
+                class="text-gray-400 hover:text-[#9FDF32] font-medium mx-2 sm:mx-4 my-1 transition-colors"
+                aria-label="Contact section">Contact</a>
         </nav>
 
-        <!-- Hero Section -->
-        <header class="text-center py-16">
-            <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#E0E8E1] leading-tight opacity-0 transform translate-y-4 transition-all duration-700">
+        <header class="text-center py-16" id="top">
+            <h1 id="hero-title"
+                class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#E0E8E1] leading-tight opacity-0 transform translate-y-4 transition-all duration-700">
                 <span class="job-title-highlight">Analyzeo</span> <span class="text-action">()</span>
             </h1>
-            <p id="hero-subtitle" class="text-lg sm:text-xl text-gray-400 mt-4 max-w-2xl mx-auto opacity-0 transform translate-y-4 transition-all duration-700 delay-200">
+            <p id="hero-subtitle"
+                class="text-lg sm:text-xl text-gray-400 mt-4 max-w-2xl mx-auto opacity-0 transform translate-y-4 transition-all duration-700 delay-200">
                 Your partner in data-driven <span class="text-action font-bold">growth</span>.
             </p>
         </header>
 
-        <!-- About Section -->
         <section id="about" class="section-card">
             <h2 class="text-2xl font-bold section-header">The Legend of Analyzeo</h2>
-            <div class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
-                <div class="video-viewport rounded-xl">
-                    <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" title="The Legend of Analyzeo - A data story."></iframe>
-                </div>
+            <div
+                class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
+                <iframe src="https://www.youtube.com/embed/dlmxMXboKkE?autoplay=1&loop=1&playlist=dlmxMXboKkE&mute=1"
+                    title="The Legend of Analyzeo - A data story." allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
             </div>
             <div class="text-[#E0E8E1] leading-relaxed mt-4">
                 <p class="text-lg font-semibold text-center mb-4">Our partnership, forged in the heart of data.</p>
                 <article class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
                     <p>
-                        In the dense digital forest of the modern business world, a new hero prowls. We are Analyzeo, a collective of cunning fox analysts whose intellect is as sharp as our reflexes. Our partnership, built for the information age, fights the chaos of unorganized data and the villains of inefficiency with a unified purpose.
+                        In the dense digital forest of the modern business world, a new hero prowls. We are Analyzeo, a
+                        collective of cunning fox analysts whose intellect is as sharp as our reflexes. Our partnership,
+                        built for the information age, fights the chaos of unorganized data and the villains of
+                        inefficiency with a unified purpose.
                     </p>
                     <p>
-                        As masters of the digital realm, our suits, woven with circuit patterns, and our neon scarves, shimmering with the energy of a thousand algorithms, are a testament to our expertise. With a single glance, we can predict market shifts and expose a competitor’s weaknesses. Our powers are a refined arsenal of analytical prowess, from <strong>financial and market analytics</strong> that forecast trends, to <strong>business analytics</strong> that optimize operations, and even <strong>HR analytics</strong> that reveal a team's true potential. We hunt through petabytes of data in a heartbeat, identifying the subtle correlations that become a winning strategy.
+                        As masters of the digital realm, our suits, woven with circuit patterns, and our neon scarves,
+                        shimmering with the energy of a thousand algorithms, are a testament to our expertise. With a
+                        single glance, we can predict market shifts and expose a competitor’s weaknesses. Our powers are
+                        a refined arsenal of analytical prowess, from <strong>financial and market analytics</strong> that
+                        forecast trends, to <strong>business analytics</strong> that optimize operations, and even
+                        <strong>HR analytics</strong> that reveal a team's true potential. We hunt through petabytes of
+                        data in a heartbeat, identifying the subtle correlations that become a winning strategy.
                     </p>
                     <p>
-                        We are heroes found in the quiet confidence of small and mid-sized companies. Our mission is to empower these businesses, turning a struggling startup into a market leader and helping a family business thrive by revealing untapped customer segments and streamlining their operations.
+                        We are heroes found in the quiet confidence of small and mid-sized companies. Our mission is to
+                        empower these businesses, turning a struggling startup into a market leader and helping a family
+                        business thrive by revealing untapped customer segments and streamlining their operations.
                     </p>
                     <p>
-                        For us, the true reward is watching a business take control of its own destiny, using data as its greatest weapon. As a partnership, we are the cunning tacticians who always know the smartest move, turning raw data into a clear path forward for those wise enough to follow our lead.
+                        For us, the true reward is watching a business take control of its own destiny, using data as its
+                        greatest weapon. As a partnership, we are the cunning tacticians who always know the smartest
+                        move, turning raw data into a clear path forward for those wise enough to follow our lead.
                     </p>
                 </article>
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services" class="section-card">
             <h2 class="section-header">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="project-card p-6 rounded-lg">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Business Intelligence</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Building custom dashboards and reports to visualize key performance indicators and monitor business health.
+                        Building custom dashboards and reports to visualize key performance indicators and monitor
+                        business health.
                     </p>
                 </div>
                 <div class="project-card p-6 rounded-lg">
@@ -228,7 +263,8 @@
                 <div class="project-card p-6 rounded-lg">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">HR Analytics</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Leveraging workforce data to optimize recruitment, retention, and employee engagement strategies.
+                        Leveraging workforce data to optimize recruitment, retention, and employee engagement
+                        strategies.
                     </p>
                 </div>
                 <div class="project-card p-6 rounded-lg">
@@ -240,128 +276,163 @@
                 <div class="project-card p-6 rounded-lg">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Marketing Analytics</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Using data to optimize marketing campaigns, improve customer engagement, and boost conversion rates.
+                        Using data to optimize marketing campaigns, improve customer engagement, and boost conversion
+                        rates.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="section-card">
             <h2 class="section-header">My Chronicles of Victory</h2>
             <div class="space-y-12">
-                <!-- Avoxi Billing Analysis Project -->
                 <div class="project-card rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Avoxi Billing Analysis: Defeating Hidden Costs</h3>
+                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Avoxi Billing Analysis: Defeating Hidden
+                        Costs</h3>
                     <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
-                        <strong>The Challenge:</strong> A company was losing money on billing, but they couldn't see where. The data was fragmented and disorganized.
+                        <strong>The Challenge:</strong> A company was losing money on billing, but they couldn't see
+                        where. The data was fragmented and disorganized.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I used <strong>Python</strong> and <strong>Pandas</strong> to consolidate all the fragmented data, creating a single, clear dataset.</li>
-                        <li class="list-item">I analyzed the data to expose hidden discrepancies like low gross margins and overbilling from specific vendors.</li>
-                        <li class="list-item">I created clear reports and visualizations with <strong>Matplotlib</strong> and <strong>Seaborn</strong> that showed the company exactly where they were losing money.</li>
+                        <li class="list-item">I used <strong>Python</strong> and <strong>Pandas</strong> to consolidate
+                            all the fragmented data, creating a single, clear dataset.</li>
+                        <li class="list-item">I analyzed the data to expose hidden discrepancies like low gross margins
+                            and overbilling from specific vendors.</li>
+                        <li class="list-item">I created clear reports and visualizations with <strong>Matplotlib</strong>
+                            and <strong>Seaborn</strong> that showed the company exactly where they were losing money.
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Power BI Dashboard Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">The Power BI Dashboard: A Strategic Compass</h3>
                     <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
-                        <strong>The Challenge:</strong> A business needed to make data-driven decisions but couldn't get a clear, real-time picture of their performance.
+                        <strong>The Challenge:</strong> A business needed to make data-driven decisions but couldn't get
+                        a clear, real-time picture of their performance.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I built a dynamic <strong>Power BI dashboard</strong> that connected all their data sources.</li>
-                        <li class="list-item">I cleaned and transformed the raw data using Power Query to ensure reliability.</li>
-                        <li class="list-item">The dashboard now serves as a real-time, interactive map, allowing them to explore key metrics and make data-driven decisions with confidence.</li>
+                        <li class="list-item">I built a dynamic <strong>Power BI dashboard</strong> that connected all
+                            their data sources.</li>
+                        <li class="list-item">I cleaned and transformed the raw data using Power Query to ensure
+                            reliability.</li>
+                        <li class="list-item">The dashboard now serves as a real-time, interactive map, allowing them to
+                            explore key metrics and make data-driven decisions with confidence.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#00A3FF] hover:underline font-semibold text-center" aria-label="View Power BI Strategic Compass">
+                        <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                            target="_blank"
+                            class="w-full sm:w-auto text-[#00A3FF] hover:underline font-semibold text-center"
+                            aria-label="View Power BI Strategic Compass">
                             View My Strategic Compass
                         </a>
                     </div>
                 </div>
 
-                <!-- Advanced Excel Project -->
                 <div class="project-card rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to Profitability</h3>
+                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project: Navigating to
+                        Profitability</h3>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">The Challenge and the Insights</h4>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        <strong>The Challenge:</strong> A company struggled with low gross margins and overbilling, but the problem was buried in scattered spreadsheets.
+                        <strong>The Challenge:</strong> A company struggled with low gross margins and overbilling, but
+                        the problem was buried in scattered spreadsheets.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
-                        <li>I guided them to combine their separate monthly sheets into a single, master data source.</li>
+                        <li>I guided them to combine their separate monthly sheets into a single, master data source.
+                        </li>
                         <li>My analysis revealed that a specific vendor's billing model was a major source of loss.</li>
-                        <li>I showed them how their flat-rate pricing was costing them money on many calls, leading to a new pricing strategy.</li>
+                        <li>I showed them how their flat-rate pricing was costing them money on many calls, leading to a
+                            new pricing strategy.</li>
                     </ul>
                     <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">Recommendations for a New Path</h4>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
-                        <li><strong>Renegotiate or Switch:</strong> I advised them to renegotiate with the low-margin vendors, providing them with the data they needed to back up their claims.</li>
-                        <li><strong>Optimize Rates:</strong> I presented a data-backed case for tiered pricing, showing how it would help them reach their 45% gross margin target.</li>
-                        <li><strong>Automate for the Future:</strong> I outlined a plan for an automated system that would allow them to perform instant "what-if" analyses for future decisions.</li>
+                        <li><strong>Renegotiate or Switch:</strong> I advised them to renegotiate with the low-margin
+                            vendors, providing them with the data they needed to back up their claims.</li>
+                        <li><strong>Optimize Rates:</strong> I presented a data-backed case for tiered pricing, showing
+                            how it would help them reach their 45% gross margin target.</li>
+                        <li><strong>Automate for the Future:</strong> I outlined a plan for an automated system that
+                            would allow them to perform instant "what-if" analyses for future decisions.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View Advanced Excel Path to Profitability">
+                        <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing"
+                            target="_blank" class="text-[#00A3FF] hover:underline font-semibold"
+                            aria-label="View Advanced Excel Path to Profitability">
                             View My Path to Profitability
                         </a>
                     </div>
                 </div>
 
-                <!-- MySQL Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">MySQL Project: Building a Strong Foundation</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        <strong>The Challenge:</strong> A company needed a solid foundation for their sales data, but their existing system was inefficient.
+                        <strong>The Challenge:</strong> A company needed a solid foundation for their sales data, but
+                        their existing system was inefficient.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E0E0] text-sm pl-4">
-                        <li class="list-item">I designed and built a robust relational database using <strong>MySQL</strong>.</li>
-                        <li class="list-item">I used complex <strong>SQL queries</strong> to extract meaningful business insights.</li>
-                        <li class="list-item">This project helped the client establish a reliable, efficient system for data storage and analysis, preparing them for future growth.</li>
+                        <li class="list-item">I designed and built a robust relational database using <strong>MySQL</strong>.
+                        </li>
+                        <li class="list-item">I used complex <strong>SQL queries</strong> to extract meaningful business
+                            insights.</li>
+                        <li class="list-item">This project helped the client establish a reliable, efficient system for
+                            data storage and analysis, preparing them for future growth.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View MySQL Foundation Plan">
+                        <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                            target="_blank" class="text-[#00A3FF] hover:underline font-semibold"
+                            aria-label="View MySQL Foundation Plan">
                             View My Foundation Plan
                         </a>
                     </div>
                 </div>
 
-                <!-- Marketing Analytics Project -->
                 <div class="project-card rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics: Optimizing the Customer Journey</h3>
+                    <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics: Optimizing the Customer
+                        Journey</h3>
                     <p class="text-[#E0E8E1] leading-relaxed">
-                        <strong>The Challenge:</strong> A company's marketing efforts were falling short, and they didn't know why. They needed to understand their customer's journey better.
+                        <strong>The Challenge:</strong> A company's marketing efforts were falling short, and they
+                        didn't know why. They needed to understand their customer's journey better.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mt-4">
-                        <li class="list-item">I improved their marketing by creating an article with unique keywords, driving new traffic.</li>
-                        <li class="list-item">I proposed a diagnostic assessment to solve issues like high bounce rates and low conversion.</li>
-                        <li class="list-item">I conducted <strong>A/B Testing</strong> to guide them toward a more engaging and effective website design.</li>
-                        <li class="list-item">I leveraged <strong>R programming</strong> to perform in-depth statistical analysis on customer behavior data.</li>
+                        <li class="list-item">I improved their marketing by creating an article with unique keywords,
+                            driving new traffic.</li>
+                        <li class="list-item">I proposed a diagnostic assessment to solve issues like high bounce rates
+                            and low conversion.</li>
+                        <li class="list-item">I conducted <strong>A/B Testing</strong> to guide them toward a more
+                            engaging and effective website design.</li>
+                        <li class="list-item">I leveraged <strong>R programming</strong> to perform in-depth statistical
+                            analysis on customer behavior data.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View Marketing Project PDF">
+                        <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00A3FF] hover:underline font-semibold"
+                            aria-label="View Marketing Project PDF">
                             View My Project PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- HR Analytics Project -->
                 <div class="project-card rounded-xl p-6">
                     <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">HR Analytics: Building a Smarter Team</h3>
                     <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                        <strong>The Challenge:</strong> A company's HR processes were inefficient and they wanted to get ahead of employee attrition.
+                        <strong>The Challenge:</strong> A company's HR processes were inefficient and they wanted to get
+                        ahead of employee attrition.
                     </p>
                     <p class="text-action mt-2 mb-2">My Strategy:</p>
                     <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                        <li class="list-item">I provided a comprehensive <strong>HR analytics</strong> solution using <strong>Python</strong> to streamline their recruitment.</li>
-                        <li class="list-item">I built a <strong>resume parsing</strong> script to automate the extraction of key information, saving countless hours.</li>
-                        <li class="list-item">I developed a predictive model to forecast employee attrition, helping them solve talent retention issues before they began.</li>
+                        <li class="list-item">I provided a comprehensive <strong>HR analytics</strong> solution using
+                            <strong>Python</strong> to streamline their recruitment.</li>
+                        <li class="list-item">I built a predictive model to forecast employee attrition, helping them
+                            solve talent retention issues before they began.</li>
+                        <li class="list-item">I developed a predictive model to forecast employee attrition, helping them
+                            solve talent retention issues before they began.</li>
                     </ul>
                     <div class="mt-8 text-center">
-                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#00A3FF] hover:underline font-semibold" aria-label="View HR Analytics Presentation">
+                        <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank"
+                            class="text-[#00A3FF] hover:underline font-semibold"
+                            aria-label="View HR Analytics Presentation">
                             View My HR Analytics Presentation
                         </a>
                     </div>
@@ -369,93 +440,118 @@
             </div>
         </section>
 
-        <!-- Hero's Journey Video Section -->
         <section id="heros-journey" class="section-card">
             <h2 class="section-header">The Hero's Journey in Data</h2>
-            <p class="text-center text-[#E0E8E1] mb-6">See how a professional navigates the complexities of data to achieve impactful results and overcome challenges in the real world.</p>
-            <div class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
-                <div class="video-viewport rounded-xl">
-                    <iframe src="https://www.youtube.com/embed/SvF9vh7TmfM?autoplay=1&loop=1&playlist=SvF9vh7TmfM&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full" title="The Hero's Journey - A video on data insights."></iframe>
-                </div>
+            <p class="text-center text-[#E0E8E1] mb-6">See how a professional navigates the complexities of data to
+                achieve impactful results and overcome challenges in the real world.</p>
+            <div
+                class="video-container my-4 flex justify-center items-center w-full max-w-3xl mx-auto rounded-xl shadow-lg overflow-hidden">
+                <iframe src="https://www.youtube.com/embed/SvF9vh7TmfM?autoplay=1&loop=1&playlist=SvF9vh7TmfM&mute=1"
+                    title="The Hero's Journey - A video on data insights." allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="testimonials" class="section-card">
             <h2 class="section-header">What Our Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
-                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"Analyzeo ()'s insights completely transformed our marketing strategy. Their team is knowledgeable, responsive, and a pleasure to work with."</p>
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"Analyzeo ()'s insights completely transformed
+                        our marketing strategy. Their team is knowledgeable, responsive, and a pleasure to work with."</p>
                     <p class="text-right font-semibold text-[#9FDF32]">- Jane Davis, CEO of TechCorp</p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
-                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"The data analysis they provided was exactly what we needed to optimize our operations. We saw a significant increase in efficiency almost immediately."</p>
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                    <p class="text-[#F8F8F2] italic leading-relaxed mb-4">"The data analysis they provided was exactly
+                        what we needed to optimize our operations. We saw a significant increase in efficiency almost
+                        immediately."</p>
                     <p class="text-right font-semibold text-[#9FDF32]">- John Chen, Operations Director</p>
                 </div>
             </div>
         </section>
 
-        <!-- Expertise Section -->
         <section id="expertise" class="section-card">
             <h2 class="section-header">Our Expertise</h2>
             <div class="flex flex-wrap gap-2">
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Visual Studio</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Python</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">R</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">SQL</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Power BI</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Tableau</span>
-                <span class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Advanced Excel</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Visual
+                    Studio</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Python</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">R</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">SQL</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Power
+                    BI</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Tableau</span>
+                <span
+                    class="bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-full border border-gray-700">Advanced
+                    Excel</span>
             </div>
         </section>
 
-        <!-- Recommendations Section -->
         <section id="recommendations" class="section-card">
             <h2 class="section-header">Our Recommendations for Data Growth</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Start with a Clear Question</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Before you start collecting data, define the specific business question you want to answer. A clear objective ensures your analysis is focused and relevant.
+                        Before you start collecting data, define the specific business question you want to answer. A
+                        clear objective ensures your analysis is focused and relevant.
                     </p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Centralize Your Data</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Bring all your data sources into a single, unified location. This eliminates silos and provides a holistic view of your business, making analysis more efficient.
+                        Bring all your data sources into a single, unified location. This eliminates silos and provides
+                        a holistic view of your business, making analysis more efficient.
                     </p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Prioritize Data Quality</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Garbage in, garbage out. Invest in data cleansing and validation to ensure the accuracy and reliability of your information. High-quality data leads to trustworthy insights.
+                        Garbage in, garbage out. Invest in data cleansing and validation to ensure the accuracy and
+                        reliability of your information. High-quality data leads to trustworthy insights.
                     </p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Don't Be Afraid to Experiment</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Data analysis is an iterative process. Try new models, test different hypotheses, and explore new tools to uncover unexpected and valuable findings.
+                        Data analysis is an iterative process. Try new models, test different hypotheses, and explore new
+                        tools to uncover unexpected and valuable findings.
                     </p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Laser-Focused Goal Setting</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Define precise, measurable goals for your data initiatives. A focused approach ensures that your resources are directed toward achieving specific, high-impact results.
+                        Define precise, measurable goals for your data initiatives. A focused approach ensures that your
+                        resources are directed toward achieving specific, high-impact results.
                     </p>
                 </div>
-                <div class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
+                <div
+                    class="project-card p-6 rounded-lg transform transition-transform hover:scale-[1.02] hover:shadow-xl">
                     <h3 class="font-semibold text-lg text-[#00A3FF] mb-2">Embrace Collaborative Insights</h3>
                     <p class="text-[#E0E0E0] text-sm">
-                        Data comes alive when different parts "connect." Encourage collaboration across teams to combine diverse data sets and uncover powerful, cross-functional insights.
+                        Data comes alive when different parts "connect." Encourage collaboration across teams to combine
+                        diverse data sets and uncover powerful, cross-functional insights.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="section-card">
             <h2 class="section-header">Contact Us</h2>
-            <p class="text-center text-[#E0E8E1] mb-6">Let's connect and transform your data into growth. Send us a message!</p>
+            <p class="text-center text-[#E0E8E1] mb-6">Let's connect and transform your data into growth. Send us a
+                message!</p>
             <form id="contactForm" action="https://formspree.io/f/xpwyarpo" method="POST" class="space-y-4">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Name</label>
@@ -463,199 +559,311 @@
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email</label>
-                    <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com">
+                    <input type="email" id="email" name="email" class="form-input" required
+                        placeholder="your.email@example.com">
                 </div>
                 <div>
                     <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Message</label>
-                    <textarea id="message" name="message" rows="4" class="form-input" required placeholder="Your message..."></textarea>
+                    <textarea id="message" name="message" rows="4" class="form-input" required
+                        placeholder="Your message..."></textarea>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </div>
+                <button type="submit" class="submit-btn w-full">Send Message</button>
             </form>
-            <div id="formMessage" class="mt-4 text-center hidden"></div>
-
-            <div class="space-y-4 mt-8 pt-8 border-t border-gray-700">
-                <p class="flex items-center text-lg text-[#E0E8E1] font-semibold">
-                    Mark Anthony Recio
-                </p>
-                <p class="flex items-center text-[#E0E8E1]">
-                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                    </svg>
-                    <a href="mailto:analyzeo@proton.me" class="text-[#00A3FF] hover:underline">analyzeo@proton.me</a>
-                </p>
-                <p class="flex items-center text-[#E0E8E1]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#00A3FF] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                    <a href="https://www.linkedin.com/in/markanthonyrecio/" target="_blank" class="text-[#00A3FF] hover:underline">LinkedIn Profile</a>
-                </p>
-                <p class="flex items-center text-[#E0E8E1]">
-                    <svg class="w-5 h-5 text-[#00A3FF] mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1.53 13.53a.75.75 0 01-1.06-1.06L9.94 10.5l-2.53-2.53a.75.75 0 011.06-1.06l3 3a.75.75 0 010 1.06l-3 3z" clip-rule="evenodd"></path>
-                    </svg>
-                    <a href="https://github.com/recio-tech" target="_blank" class="text-[#00A3FF] hover:underline">GitHub Profile</a>
-                </p>
-            </div>
         </section>
+
+        <footer class="text-center py-8 text-sm text-gray-500">
+            &copy; 2024 Analyzeo. All rights reserved.
+        </footer>
     </div>
 
-    <!-- Back to top button -->
-    <button id="back-to-top" aria-label="Back to top">
-        ↑ Top
-    </button>
-
     <script>
+        // Hero title and subtitle animation
         document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('bgCanvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            const particleCount = 200;
-            let mouse = { x: null, y: null };
-            let animationFrameId = null;
+            const heroTitle = document.getElementById('hero-title');
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroTitle && heroSubtitle) {
+                heroTitle.classList.remove('opacity-0', 'translate-y-4');
+                heroTitle.classList.add('opacity-100', 'translate-y-0');
+                heroSubtitle.classList.remove('opacity-0', 'translate-y-4');
+                heroSubtitle.classList.add('opacity-100', 'translate-y-0');
+            }
+        });
 
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+        // Intersection Observer for section cards
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Canvas animation logic for the background
+        const canvas = document.getElementById('animated-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        const resizeCanvas = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        };
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const dataLakeCount = 10;
+        const dataLakes = [];
+        const pulses = [];
+
+        function getRandomColor() {
+            const colors = ['#9FDF32', '#00A3FF', '#E0E8E1'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Represents a single floating data node
+        class DataNode {
+            constructor(parentLake, index) {
+                this.parent = parentLake;
+                this.index = index;
+                const angle = Math.random() * Math.PI * 2;
+                this.distanceFromCenter = (this.parent.size / 3) + (Math.random() * (this.parent.size / 2));
+                this.x = Math.cos(angle) * this.distanceFromCenter;
+                this.y = Math.sin(angle) * this.distanceFromCenter;
+                this.radius = Math.random() * 1.5 + 0.5;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.color = this.parent.color;
             }
 
-            // Class for each individual particle
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2 + 1;
-                    this.baseSpeedX = (Math.random() - 0.5) * 0.2;
-                    this.baseSpeedY = (Math.random() - 0.5) * 0.2;
-                    this.color = `#00a3ff`;
-                }
+            update() {
+                // Chaotic movement relative to the parent lake
+                this.x += this.vx;
+                this.y += this.vy;
 
-                update() {
-                    this.x += this.baseSpeedX;
-                    this.y += this.baseSpeedY;
-
-                    // Bounce off walls
-                    if (this.x < 0 || this.x > canvas.width) this.baseSpeedX = -this.baseSpeedX;
-                    if (this.y < 0 || this.y > canvas.height) this.baseSpeedY = -this.baseSpeedY;
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
+                const distFromCenter = Math.sqrt(this.x * this.x + this.y * this.y);
+                if (distFromCenter > this.parent.size * 0.8) {
+                    this.vx *= -1;
+                    this.vy *= -1;
                 }
             }
 
-            // Initializes particles
-            function init() {
-                particles = [];
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push(new Particle());
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.parent.x + this.x, this.parent.y + this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 1;
+                ctx.fill();
+            }
+        }
+
+        // Represents the main floating "data lake" cluster
+        class DataLake {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.2;
+                this.vy = (Math.random() - 0.5) * 0.2;
+                this.size = Math.random() * 100 + 100;
+                this.color = getRandomColor();
+                this.nodes = [];
+                const nodeCount = 50;
+                for (let i = 0; i < nodeCount; i++) {
+                    this.nodes.push(new DataNode(this, i));
+                }
+                this.pulseRadius = 0;
+                this.pulseMaxRadius = this.size * 1.2;
+                this.label = null;
+            }
+
+            update() {
+                // Move the entire lake
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Wrap around the screen
+                if (this.x < 0 - this.size) this.x = width + this.size;
+                if (this.x > width + this.size) this.x = 0 - this.size;
+                if (this.y < 0 - this.size) this.y = height + this.size;
+                if (this.y > height + this.size) this.y = 0 - this.size;
+
+                this.nodes.forEach(node => node.update());
+
+                // Update pulse radius
+                this.pulseRadius += 0.5;
+                if (this.pulseRadius > this.pulseMaxRadius) {
+                    this.pulseRadius = 0;
                 }
             }
 
-            // Draws lines between nearby particles
-            function connect() {
-                let opacity = 1;
-                for (let a = 0; a < particles.length; a++) {
-                    for (let b = a; b < particles.length; b++) {
-                        let distance = Math.sqrt(
-                            ((particles[a].x - particles[b].x) ** 2) +
-                            ((particles[a].y - particles[b].y) ** 2)
-                        );
-                        if (distance < 100) {
-                            opacity = 1 - (distance / 100);
-                            ctx.strokeStyle = `rgba(159, 223, 50, ${opacity})`;
-                            ctx.lineWidth = 1;
+            draw() {
+                // Draw the internal connections
+                const connectionDistance = 80;
+                for (let i = 0; i < this.nodes.length; i++) {
+                    for (let j = i + 1; j < this.nodes.length; j++) {
+                        const dist = Math.sqrt(Math.pow(this.nodes[i].x - this.nodes[j].x, 2) + Math.pow(this.nodes[i].y - this.nodes[j].y, 2));
+
+                        if (dist < connectionDistance) {
                             ctx.beginPath();
-                            ctx.moveTo(particles[a].x, particles[a].y);
-                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.moveTo(this.x + this.nodes[i].x, this.y + this.nodes[i].y);
+                            ctx.lineTo(this.x + this.nodes[j].x, this.y + this.nodes[j].y);
+                            ctx.strokeStyle = `rgba(159, 223, 50, ${0.5 - dist / connectionDistance})`;
+                            ctx.lineWidth = 0.5;
                             ctx.stroke();
                         }
                     }
                 }
+
+                // Draw the nodes
+                this.nodes.forEach(node => node.draw());
+
+                // Draw the pulse effect
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.pulseRadius, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(159, 223, 50, ${1 - (this.pulseRadius / this.pulseMaxRadius)})`;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw the core of the lake
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.8;
+                ctx.fill();
+
+                // Draw the "DATA LAKE" label
+                if (this.label) {
+                    ctx.fillStyle = '#E0E8E1';
+                    ctx.font = "14px 'Roboto Mono', monospace";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.globalAlpha = 1;
+                    ctx.fillText(this.label, this.x, this.y);
+                }
+            }
+        }
+
+        // Initialize data lakes
+        for (let i = 0; i < dataLakeCount; i++) {
+            dataLakes.push(new DataLake());
+        }
+
+        // Assign the "DATA LAKE" label to two random, distinct lakes
+        let lake1Index = Math.floor(Math.random() * dataLakes.length);
+        let lake2Index = Math.floor(Math.random() * dataLakes.length);
+        while (lake2Index === lake1Index) {
+            lake2Index = Math.floor(Math.random() * dataLakes.length);
+        }
+        dataLakes[lake1Index].label = "DATA LAKE";
+        dataLakes[lake2Index].label = "DATA LAKE";
+
+        // Represents a dramatic blast pulse for the background
+        class BlastingPulse {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = 0;
+                this.maxRadius = Math.random() * 200 + 100;
+                this.opacity = 1;
+                this.speed = Math.random() * 2 + 1;
+                this.color = '#00A3FF';
             }
 
-            // The main animation loop
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas for a crisp animation
-                connect();
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                }
-                animationFrameId = requestAnimationFrame(animate);
+            update() {
+                this.radius += this.speed;
+                this.opacity = 1 - (this.radius / this.maxRadius);
             }
 
-            // Intersection Observer to handle section animations on scroll
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.strokeStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+        function createBlastingPulse() {
+            if (dataLakes.length > 0) {
+                const randomLake = dataLakes[Math.floor(Math.random() * dataLakes.length)];
+                pulses.push(new BlastingPulse(randomLake.x, randomLake.y));
+            }
+        }
+
+        setInterval(createBlastingPulse, 15000);
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw connections between nearby data lakes
+            const lakeConnectionDistance = 300;
+            for (let i = 0; i < dataLakes.length; i++) {
+                dataLakes[i].update();
+
+                for (let j = i + 1; j < dataLakes.length; j++) {
+                    const lakeA = dataLakes[i];
+                    const lakeB = dataLakes[j];
+                    const dist = Math.sqrt(Math.pow(lakeA.x - lakeB.x, 2) + Math.pow(lakeA.y - lakeB.y, 2));
+
+                    if (dist < lakeConnectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(lakeA.x, lakeA.y);
+                        ctx.lineTo(lakeB.x, lakeB.y);
+                        ctx.strokeStyle = `rgba(0, 163, 255, ${0.5 - dist / lakeConnectionDistance})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
                     }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.section-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Back to top button logic
-            const backToTopButton = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
                 }
-            });
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            }
 
-            // Contact Form Submission (using fetch to prevent page reload)
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
+            // Draw the data lakes themselves
+            dataLakes.forEach(lake => lake.draw());
 
-            contactForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const formData = new FormData(contactForm);
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+            // Draw pulses
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                pulses[i].update();
+                pulses[i].draw();
 
-                if (response.ok) {
-                    formMessage.textContent = "Thank you! Your message has been sent successfully.";
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-[#9FDF32]');
-                    contactForm.reset();
-                } else {
-                    formMessage.textContent = "Oops! There was a problem. Please try again later.";
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-red-500');
+                if (pulses[i].opacity <= 0) {
+                    pulses.splice(i, 1);
                 }
-            });
+            }
 
-            // Start the animations and observers
-            resizeCanvas();
-            init();
-            animate();
-        });
+            requestAnimationFrame(draw);
+        }
+
+        draw();
     </script>
-
 </body>
+
 </html>
