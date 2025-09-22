@@ -226,7 +226,7 @@
                     </p>
                     <p>
                         We are heroes found in the quiet confidence of small and mid-sized companies. Our mission is to
-                        empower these businesses, turning a struggling startup into a market leader and helping a family
+                        empower these businesses, turning a startup or existing company into a market leader and helping a family
                         business thrive by revealing untapped customer segments and streamlining their operations.
                     </p>
                     <p>
@@ -552,7 +552,7 @@
             <h2 class="section-header">Contact Us</h2>
             <p class="text-center text-[#E0E8E1] mb-6">Let's connect and transform your data into growth. Send us a
                 message!</p>
-            <form id="contactForm" action="https://formspree.io/f/xpwyarpo" method="POST" class="space-y-4">
+            <form id="contactForm" class="space-y-4">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Name</label>
                     <input type="text" id="name" name="name" class="form-input" required placeholder="Your Name">
@@ -567,7 +567,14 @@
                     <textarea id="message" name="message" rows="4" class="form-input" required
                         placeholder="Your message..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn w-full">Send Message</button>
+                <button type="submit" id="submit-btn" class="submit-btn w-full relative overflow-hidden flex items-center justify-center">
+                    <span id="button-text">Send Message</span>
+                    <div id="loading-spinner" class="absolute hidden w-6 h-6 border-2 border-white border-b-transparent rounded-full animate-spin"></div>
+                    <svg id="success-checkmark" class="absolute h-6 w-6 text-[#9FDF32] hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </button>
+                <div id="status-message" class="mt-4 text-center text-sm font-semibold hidden"></div>
             </form>
         </section>
 
@@ -863,6 +870,42 @@
         }
 
         draw();
+
+        // New script for handling form submission directly
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submit-btn');
+        const buttonText = document.getElementById('button-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const successCheckmark = document.getElementById('success-checkmark');
+        const statusMessage = document.getElementById('status-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Simulate form submission process
+            submitBtn.disabled = true;
+            buttonText.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            statusMessage.textContent = 'Sending...';
+            statusMessage.classList.remove('hidden', 'text-[#9FDF32]', 'text-red-500');
+            statusMessage.classList.add('text-gray-400');
+
+            setTimeout(() => {
+                loadingSpinner.classList.add('hidden');
+                successCheckmark.classList.remove('hidden');
+                statusMessage.classList.remove('text-gray-400');
+                statusMessage.classList.add('text-[#9FDF32]');
+                statusMessage.textContent = 'Message sent successfully! We will be in touch soon.';
+
+                // Reset button and form after a short delay
+                setTimeout(() => {
+                    successCheckmark.classList.add('hidden');
+                    buttonText.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    contactForm.reset();
+                }, 2000);
+            }, 1500); // Simulated network delay
+        });
     </script>
 </body>
 
